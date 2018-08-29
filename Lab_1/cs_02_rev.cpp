@@ -3,7 +3,7 @@
 #include <iomanip>
 
 /***********************************************************
-* FUNCTION PrintHeader
+* FUNCTION initialize
 *_________________________________________________________
 * This function initializes x and y to 0, and z to '\0'.
 *   -returns  nothing -> This initializes our variables.
@@ -31,7 +31,7 @@ void initialize ( int& x, int& y, char& z )
 /***********************************************************
 * FUNCTION getHoursRate
 *_________________________________________________________
-* This function prompts the user to enter a valuse for hours
+* This function prompts the user to enter a values for hours
 *    worked and rate payed.
 *   -returns  nothing -> This simply sets our variables.
 *_________________________________________________________
@@ -78,7 +78,7 @@ int payCheck ( double hours, double rate )
 
     double amount;                          // OUTPUT -- Total wages earned
 
-    if ( amount <= 40 ){                    // For all non-overtime hours
+    if ( hours <= 40 ){                    // For all non-overtime hours
         amount = hours*rate;                // Calculate wage
     }
 
@@ -211,12 +211,12 @@ void PrintHeader( string asName, char asType, int asNum ){
     type = "Lab";
     if ( asType != 'L') type = "Assignment";
 
-    cout<<"*****************************************\n"
+    cout<<"********************************************************\n"
         <<"   Programmed by: Justin Kuhn, Matthew Endo\n"
         <<"   Student ID   : 10231221, 10260087\n"
         <<"   CS3A         : MW: 1:00p - 2:25p, TR: 1:00p - 3:05p\n"
         <<"   "<<type<<" #"<<asNum<<"       : " << asName << "\n"
-        <<"*****************************************\n";
+        <<"********************************************************\n";
 
 }
 
