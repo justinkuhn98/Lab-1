@@ -50,8 +50,10 @@ OBJECTS_DIR   = ./
 
 ####### Files
 
-SOURCES       = ../Lab_1/main.cpp 
-OBJECTS       = main.o
+SOURCES       = ../Lab_1/main.cpp \
+		../Lab_1/cs_02_rev.cpp 
+OBJECTS       = main.o \
+		cs_02_rev.o
 DIST          = ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_pre.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/qdevice.pri \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/device_config.prf \
@@ -210,6 +212,7 @@ DIST          = ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_pre.p
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_post.prf \
+		../Lab_1/.qmake.stash \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/toolchain.prf \
@@ -231,7 +234,8 @@ DIST          = ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_pre.p
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/exceptions.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/yacc.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/lex.prf \
-		../Lab_1/Lab_1.pro  ../Lab_1/main.cpp
+		../Lab_1/Lab_1.pro cs_02_rev.h ../Lab_1/main.cpp \
+		../Lab_1/cs_02_rev.cpp
 QMAKE_TARGET  = Lab_1
 DESTDIR       = 
 TARGET        = Lab_1
@@ -406,6 +410,7 @@ Makefile: ../Lab_1/Lab_1.pro ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/macx-c
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/qt_config.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_post.prf \
+		.qmake.stash \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/mac/sdk.prf \
 		../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/toolchain.prf \
@@ -587,6 +592,7 @@ Makefile: ../Lab_1/Lab_1.pro ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/macx-c
 ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/qt_config.prf:
 ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/spec_post.prf:
+.qmake.stash:
 ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/mac/sdk.prf:
 ../../../../Qt5.10.1/5.10.1/clang_64/mkspecs/features/toolchain.prf:
@@ -632,6 +638,7 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) $(TARGET) 
+	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -653,8 +660,11 @@ compiler_clean:
 
 ####### Compile
 
-main.o: ../Lab_1/main.cpp 
+main.o: ../Lab_1/main.cpp ../Lab_1/cs_02_rev.h
 	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o main.o ../Lab_1/main.cpp
+
+cs_02_rev.o: ../Lab_1/cs_02_rev.cpp ../Lab_1/cs_02_rev.h
+	$(CXX) -c $(CXXFLAGS) $(INCPATH) -o cs_02_rev.o ../Lab_1/cs_02_rev.cpp
 
 ####### Install
 
