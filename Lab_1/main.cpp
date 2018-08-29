@@ -18,7 +18,7 @@ using namespace std;
 *_________________________________________________________
 * This program demonstrates multiple basic functions. First,
 * the user enters two doubles; the hours worked and the pay rate.
-* Pay due is calculated, along with overtime. Next, the user enters
+* Salary due is calculated, along with overtime. Next, the user enters
 * a number that is used to compute a new valuse for the a previously
 * variable. Finally, we convert a lowercase ( or uppercase ) letter
 * to the next letter in alphabet.
@@ -30,7 +30,7 @@ using namespace std;
 *   rate: Pay rate -> inputted by user
 *   hours: Hours worked -> inputted by user
 * OUTPUT:
-*   amount: The total pay earned
+*   salary: The total pay earned
 ***********************************************************/
 
 
@@ -44,7 +44,7 @@ int main()
     char z;                 // INPUT & OUTPUT -- Character for letter shift
     double rate;            // INPUT -- Rate of pay
     double hours;           // INPUT -- Hours worked
-    double amount;          // CALC & OUTPUT -- Wages earned
+    double salary;          // CALC & OUTPUT -- Wages earned
 
 
     cout << endl << endl;
@@ -58,16 +58,16 @@ int main()
 
     /**********PROCESSING & OUTPUT**********/
     cout << endl << "Initializing x and y to 0 and z to null character...";
-    initialize(x,y,z);
+    initialize(x, y, z);
 
-    cout << endl << "Calculating amount pay due...";
-    amount = payCheck(hours,rate);
+    cout << endl << "Calculating salary due...";
+    salary = payCheck(hours, rate);
 
-    cout << endl << "Printing amount pay due...";
-    printCheck(hours, rate, amount);
+    cout << endl << "Printing salary due...";
+    printCheck(hours, rate, salary);
 
     cout << endl << "funcOne test";
-    funcOne(x,y);
+    funcOne(x, y);
     cout << " x = "
          << x;
 
@@ -77,7 +77,6 @@ int main()
     cout << endl << endl << " z == " << z \
          << endl << endl;
     return 0;
-
 }
 
 
