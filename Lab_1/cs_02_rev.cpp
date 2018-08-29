@@ -61,34 +61,37 @@ void getHoursRate(double& hours, double& rate)
 *_________________________________________________________
 * This function calculates total wages given ours worked
 *    and rate payed.
-*   -returns  int amount.
+*   -returns  int salary.
 *_________________________________________________________
 * PRE-CONDITIONS
 *   The following need to be previously defined values:
 *       hours: hours worked
 *       rate: normal pay rate
 * POST-CONDITIONS
-*     amount: total wages earned
+*     salary: total wages earned
 ***********************************************************/
 
 int payCheck ( double hours, double rate )
 {
 
-    const double OVERTIME_RATE = 40 * 1.5;  // INPUT -- Overtime for calc
+    const double OVERTIME_RATE = rate * 1.5;  // INPUT -- Overtime for calc
 
-    double amount;                          // OUTPUT -- Total wages earned
+    double salary;                          // OUTPUT -- Total wages earned
 
-    if ( hours <= 40 ){                    // For all non-overtime hours
-        amount = hours*rate;                // Calculate wage
+    if ( hours <= 40 )                      // For all non-overtime hours
+    {
+        salary = hours * rate;                // Calculate wage
     }
 
-    else {                                  // If overtime
+    else if ( hours > 40 )                  // If overtime
+    {
         hours -= 40;                        // Calc overtime hours
-        amount = 40 * rate;                 // Calc reg hours
-        amount += hours * OVERTIME_RATE;    // Calc total
-
+        salary = 40 * rate;                 // Calc reg hours
+        salary += hours * OVERTIME_RATE;    // Calc total
     }
-    return amount;
+
+
+    return salary;
 }
 
 
@@ -104,23 +107,23 @@ int payCheck ( double hours, double rate )
 *   The following need to be previously defined values:
 *       hours: hours worked
 *       rate: normal pay rate
-*       amount: total wages earned
+*       salary: total wages earned
 * POST-CONDITIONS
-*    This functions outputs the hours, rate, and amount.
+*    This functions outputs the hours, rate, and salary.
 ***********************************************************/
 
-void printCheck( double hours, double rate, double amount )
+void printCheck( double hours, double rate, double salary )
 {
-    cout << endl << endl ;
+    cout << endl << endl;
 
     cout.setf(ios::fixed);          // Format to show decimal
     cout.setf(ios::showpoint);
     cout.precision(2);              // Set decimal precision
 
-    /*Show hours worked, normal rate, and total amount*/
+    /*Show hours worked, normal rate, and total salary*/
     cout << "Hours Worked:  " << setw(10) << hours <<  endl;
     cout << "Rate        :  " << setw(10) << rate <<  endl;
-    cout << "Amount      :  " << setw(10) << amount << endl;
+    cout << "Salary      :  " << setw(10) << salary << endl;
 
 }
 
@@ -177,10 +180,12 @@ void funcOne( int& x, int y )
 void nextChar( char& i )
 {
     if ( (i < 90 && i >= 65)
-         || ( i < 122 && i >= 97 ) ){ // Uppercase or lowercase (ASCII)
+         || ( i < 122 && i >= 97 ) )  // Uppercase or lowercase (ASCII)
+    {
         i++;                          // Move to next letter
     }
-    else if ( i == 122 || i == 90 ){  // For any case of 'z'
+    else if ( i == 122 || i == 90 )   // For any case of 'z'
+    {
         i -= 25;                      // Loop back to 'a'
     }
 }
@@ -204,8 +209,8 @@ void nextChar( char& i )
 *   This function outputs the class header.
 ***********************************************************/
 
-void PrintHeader( string asName, char asType, int asNum ){
-
+void PrintHeader( string asName, char asType, int asNum )
+{
     string type;                            // OUTPUT -- Type of assignment
 
     type = "Lab";
@@ -217,7 +222,6 @@ void PrintHeader( string asName, char asType, int asNum ){
         <<"   CS3A         : MW: 1:00p - 2:25p, TR: 1:00p - 3:05p\n"
         <<"   "<<type<<" #"<<asNum<<"       : " << asName << "\n"
         <<"********************************************************\n";
-
 }
 
 
